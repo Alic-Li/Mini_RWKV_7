@@ -67,7 +67,6 @@ python3 ./API_DEMO_CHAT.py
 ## 📢 致谢
 
 - 🙌 感谢 RWKV 社区提供的开源代码和训练框架！
-- 💡 感谢所有参与语料清洗和训练的同学和朋友！
 - 🚀 感谢 [MiniMind](https://github.com/jingyaogong/minimind) 提供的 README 模板灵感！
 - 如发现 bug 或有任何建议，欢迎提交 issue 或 PR 🛠️
 
@@ -78,10 +77,9 @@ python3 ./API_DEMO_CHAT.py
 
 - [MiniMind](https://github.com/jingyaogong/minimind)：一个轻量级 LLM 教学项目 📚
 - [RWKV-V7](https://github.com/BlinkDL/RWKV-LM)：RWKV 最新版本架构仓库 🧠
-- [RWKV-Runner](https://github.com/wangyuxinwhy/rwkv-runner)：便捷推理框架 🚀
 
 ---
 
-🎉 感谢你使用 **RWKV-V7-LM-34M**！如果你喜欢这个项目，欢迎点赞、分享、Star 和 Follow！🌟
+🎉 感谢你使用 **Mini_RWKV_7**！如果你喜欢这个项目，欢迎点赞、分享、Star 和 Follow！🌟
 
 --- 
