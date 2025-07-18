@@ -67,6 +67,7 @@ python3 ./API_DEMO_CHAT.py
 
 # 🚀开始训练
 ## 🗒️ 准备数据集
+
 ### 📥 数据集下载
 ```bash
 modelscope download --dataset gongjy/minimind_dataset sft_512.jsonl sft_1024.jsonl sft_2048.jsonl pretrain_hq.jsonl sft_mini_512.jsonl --local_dir ./minimind_dataset
@@ -77,15 +78,69 @@ cd ./data;
 python3 ./make_data.py pretrain_hq.jsonl 1 512
 ```
 - 这里的1是只重复一遍数据集, 512是上下文长度 
-## 📦 stage 0 模型权重初始化(initialization model weights)
-## 📚 stage 1 预训练(Pre-training)
-## 🎯 stage 2 监督微调训练(Supervised fine-tuning [SFT])
+
+## 📦 stage 1 模型权重初始化(initialization model weights)
+```bash
+sh ./demo-training-prepare.sh
+```
+- 执行后会生成一个```./out/L8-D512-x070```文件夹，里面有初始化的模型权重文件,名为```rwkv-init.pth```
+
+## 📚 stage 2 预训练(Pre-training)
+```bash
+sh ./demo-training-run.sh
+```
+- 修改第28行的```M_BSZ="16"```可以调整batch size
+- 修改第52行的``` --wandb "" ```可以启动wandb记录训练过程
+- 训练完成后会生成一个最终权重```./out/L8-D512-x070```文件夹里面有训练好的模型权重文件,名为```rwkv-final.pth```
+
+## 🎯 stage 3 监督微调训练(Supervised fine-tuning [SFT])_ctx_512
+- 训练之前删除```./out/L8-D512-x070```文件夹里面的```rwkv-init.pth```初始权重文件
+- 然后将```./out/L8-D512-x070```文件夹里面的```rwkv-final.pth```权重文件改名为```rwkv-init.pth```来作为初始权重文件进行Post-training继续训练
+- 按照数据集Token数对照表的数据集信息修改对应的配置参数
+```bash
+CTX_LEN="512"
+MY_EXIT_TOKENS="1843253579"
+MAGIC_PRIME="3600053"
+DATA_FILE=[your data file path]
+```
+```bash
+sh ./demo-training-run-sft.sh
+```
+
+## 🎯 stage 4 监督微调训练(Supervised fine-tuning [SFT])_ctx_1024
+- 训练之前删除```./out/L8-D512-x070```文件夹里面的```rwkv-init.pth```初始权重文件
+- 然后将```./out/L8-D512-x070```文件夹里面的```rwkv-final.pth```权重文件改名为```rwkv-init.pth```来作为初始权重文件进行Post-training继续训练
+- 按照数据集Token数对照表的数据集信息修改对应的配置参数
+```bash
+CTX_LEN="1024"
+MY_EXIT_TOKENS="1430197426"
+MAGIC_PRIME="1396673"
+DATA_FILE=[you data file path]
+```
+```bash
+sh ./demo-training-run-sft.sh
+```
+
+## 🎯 stage 5 监督微调训练(Supervised fine-tuning [SFT])_ctx_2048
+- 训练之前删除```./out/L8-D512-x070```文件夹里面的```rwkv-init.pth```初始权重文件
+- 然后将```./out/L8-D512-x070```文件夹里面的```rwkv-final.pth```权重文件改名为```rwkv-init.pth```来作为初始权重文件进行Post-training继续训练
+- 按照数据集Token数对照表的数据集信息修改对应的配置参数
+```bash
+CTX_LEN="2048"
+MY_EXIT_TOKENS="2398644915"
+MAGIC_PRIME="1171199"
+DATA_FILE=[you data file path]
+```
+```bash
+sh ./demo-training-run-sft.sh
+```
 
 ## 🪿学习率建议(LR)
 ### 预训练(Pre-training) 
 - LR_INIT=```6e-4``` LR_FINAL=```6e-5```
 ### 监督微调训练(Supervised fine-tuning [SFT]) 
 - LR_INIT=```2e-5``` LR_FINAL=```1e-6```
+
 ## 💫数据集Token数对照表
 Total tokens in sft_512.jsonl: 
 - --my_exit_tokens ```1843253579``` --magic_prime ```3600053``` --ctx_len ```512```
@@ -95,7 +150,6 @@ Total tokens in sft_1024.jsonl:
 
 Total tokens in sft_2048.jsonl: 
 - --my_exit_tokens ```2398644915``` --magic_prime ```1171199``` --ctx_len ```2048```
-## 📢 使用须知
 
 ## 📢 致谢
 
