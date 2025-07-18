@@ -137,7 +137,7 @@ sh ./demo-training-run-sft.sh
 
 ## 🪿学习率建议(LR)
 ### 预训练(Pre-training) 
-- LR_INIT=```6e-4``` LR_FINAL=```6e-5```
+- LR_INIT=```6e-4``` LR_FINAL=```2e-5```
 ### 监督微调训练(Supervised fine-tuning [SFT]) 
 - LR_INIT=```2e-5``` LR_FINAL=```1e-6```
 

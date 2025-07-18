@@ -27,7 +27,7 @@ PROJ_DIR="out/L"$N_LAYER"-D"$N_EMBD"-"$MODEL_TYPE # set output folder
 #
 M_BSZ="16" # takes ~9G VRAM here => reduce this to save VRAM, increase this for faster speed
 LR_INIT="6e-4"
-LR_FINAL="6e-5"
+LR_FINAL="2e-5"
 GRAD_CP=0 # 1 => slower, save VRAM; 0 => faster, more VRAM
 EPOCH_SAVE=1 # save every 10 "miniepochs" (1 miniepoch = 40320 * ctx_len tokens) => decrease if your GPU is weak
 #
