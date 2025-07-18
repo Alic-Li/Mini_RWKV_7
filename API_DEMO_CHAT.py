@@ -55,7 +55,7 @@ CHUNK_LEN = 16  # split input into chunks to save VRAM (shorter -> slower, but s
 print(f"Loading model - {args.MODEL_NAME}")
 model = RWKV(model=args.MODEL_NAME, strategy=args.strategy)
 pipeline = PIPELINE(model, "rwkv_vocab_v20230424")
-tokenizer = AutoTokenizer.from_pretrained("/home/alic-li/minimind/MiniMind2/")
+tokenizer = AutoTokenizer.from_pretrained("./MiniMind2_tokenizer")
 
 model_tokens = []
 model_state = None
