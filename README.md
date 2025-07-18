@@ -153,6 +153,7 @@ Total tokens in sft_2048.jsonl:
 
 ## 📢 致谢
 
+- 🖥️ 感谢AMD公司的对我个人以及RWKV的云算力赞助
 - 🙌 感谢 RWKV 社区提供的开源代码和训练框架！
 - 🚀 感谢 [MiniMind](https://github.com/jingyaogong/minimind) 提供的 README 模板灵感！
 - 如发现 bug 或有任何建议，欢迎提交 issue 或 PR 🛠️
