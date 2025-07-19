@@ -45,7 +45,7 @@ DS_BUCKET_MB=2 # set to 2 for consumer GPUs, set to 200 for A100 / H100 (affects
 MY_EXIT_TOKENS="441795307"
 MAGIC_PRIME="862811"
 # DATA_FILE="data/pretrain_hq"
-DATA_FILE="/mnt/69043a6d-b152-4bd1-be10-e1130af6487f/miniRWKV/data/pretrain_hq"
+DATA_FILE="data/pretrain_hq"
 DATA_TYPE="binidx"
 #
 python train.py \
@@ -55,7 +55,7 @@ python train.py \
  --beta1 0.9 \
  --beta2 0.99 \
  --ctx_len $CTX_LEN \
- --tokenizer /mnt/69043a6d-b152-4bd1-be10-e1130af6487f/miniRWKV/MiniMind2 \
+ --tokenizer ./MiniMind2_tokenizer \
  --data_file $DATA_FILE \
  --data_type $DATA_TYPE \
  --devices $GPU_PER_NODE \
