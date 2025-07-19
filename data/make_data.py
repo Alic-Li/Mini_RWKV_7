@@ -46,7 +46,7 @@ where the data is repeated 3 times (each time with different shuffle)
 #     tokenizer = TRIE_TOKENIZER("tokenizer/rwkv_vocab_v20230424.txt")
 # except FileNotFoundError:
 #     tokenizer = TRIE_TOKENIZER("data/tokenizer/rwkv_vocab_v20230424.txt")
-tokenizer = AutoTokenizer.from_pretrained("/mnt/69043a6d-b152-4bd1-be10-e1130af6487f/miniRWKV/MiniMind2")
+tokenizer = AutoTokenizer.from_pretrained("./MiniMind2_tokenizer")
 
 def index_file_path(prefix_path):
     return prefix_path + ".idx"
