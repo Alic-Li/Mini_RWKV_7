@@ -74,8 +74,7 @@ modelscope download --dataset gongjy/minimind_dataset sft_512.jsonl sft_1024.jso
 ```
 ### 🛠️ 预训练Binidx数据集转换
 ```bash
-cd ./data;
-python3 ./make_data.py pretrain_hq.jsonl 1 512
+python3 /data/make_data.py pretrain_hq.jsonl 1 512
 ```
 - 这里的1是只重复一遍数据集, 512是上下文长度 
 
