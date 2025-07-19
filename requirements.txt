@@ -8,3 +8,4 @@ ninja
 rwkv-fla>=0.7.202506141151
 prompt_toolkit
 modelscope
+tiktoken
