@@ -1,6 +1,7 @@
 # 🪿 Mini-RWKV-V7-LM 
 🚀 让我们来从头训练一个属于自己的Mini-RWKV-7吧~ 小小的鹅也能飞得很高喔~
 
+🤗 [我自己练的模型权重现已开源~](https://huggingface.co/RWKV-Red-Team/Mini_RWKV_7_34.2M)
 <div align="center">
   <img src="./miniGoose.png" width="200" height="200" style="display: block; margin: auto;">
 </div>
