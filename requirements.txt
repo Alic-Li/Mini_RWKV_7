@@ -1,11 +1,11 @@
 torch
 transformers
 numpy
-pytorch-lightning==1.9.5
+pytorch-lightning
 deepspeed
 wandb
 ninja
-rwkv-fla>=0.7.202506141151
+rwkv-fla
 prompt_toolkit
 modelscope
 tiktoken

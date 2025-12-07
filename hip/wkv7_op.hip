@@ -19,12 +19,12 @@ void backward(torch::Tensor &w, torch::Tensor &q, torch::Tensor &k, torch::Tenso
             (float*)s.data_ptr(), (float*)sa.data_ptr(), (bf*)dw.data_ptr(), (bf*)dq.data_ptr(), (bf*)dk.data_ptr(), (bf*)dv.data_ptr(), (bf*)dz.data_ptr(), (bf*)da.data_ptr());
 }
 
-TORCH_LIBRARY(wind_backstepping_hip, m) {
+TORCH_LIBRARY(wind_backstepping, m) {
     m.def("forward(Tensor w, Tensor q, Tensor k, Tensor v, Tensor z, Tensor a, Tensor(a!) y, Tensor(b!) s, Tensor(c!) sa) -> ()");
     m.def("backward(Tensor w, Tensor q, Tensor k, Tensor v, Tensor z, Tensor a, Tensor dy, Tensor s, Tensor sa, Tensor(a!) dw, Tensor(b!) dq, Tensor(c!) dk, Tensor(d!) dv, Tensor(e!) dz, Tensor(f!) da) -> ()");
 }
 
-TORCH_LIBRARY_IMPL(wind_backstepping_hip, CUDA, m) {
+TORCH_LIBRARY_IMPL(wind_backstepping, CUDA, m) {
     m.impl("forward", &forward);
     m.impl("backward", &backward);
 }

@@ -39,6 +39,10 @@ class MyDataset(Dataset):
         assert self.samples_per_epoch == 40320
         rank_zero_info(f"########## train stage {args.train_stage} ##########")
         dataset_slot = self.data_size // args.ctx_len
+        # add default rank parameter
+        self.global_rank = 0
+        self.real_epoch = 0
+        self.world_size = 1
 
         assert is_prime(args.magic_prime)
         assert args.magic_prime % 3 == 2

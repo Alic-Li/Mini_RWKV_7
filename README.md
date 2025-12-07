@@ -1,7 +1,9 @@
 # 🪿 Mini-RWKV-V7-LM 
 🚀 让我们来从头训练一个属于自己的Mini-RWKV-7吧~ 小小的鹅也能飞得很高喔~
 
-🤗 [HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/Mini_RWKV_7_34.2M)
+🤗 [Pure RWKV V7 HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/Mini_RWKV_7_34.2M)
+
+🤗 [RWKV V7 with Deep Eembedding HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/MiniRWKV_7_DE_34.2M)
 
 🤗 [我自己练的模型权重现已开源~](https://huggingface.co/Alic-Li/Mini_RWKV_7_34.2M)
 <div align="center">
@@ -9,21 +11,96 @@
 </div>
 
 ## 🌟 模型简介
-
 本模型是基于 **RWKV-V7 架构** 训练的一个 **34M 参数量** 的语言模型`Mini-RWKV-V7-LM-34M`。它在保持轻量的同时，具备良好的语言理解和生成能力，非常适合资源极其有限的设备部署和快速迭代开发。
 
+**💫 现已经支持训练**
+- **RWKV V7架构(Pure RWKV V7)**
+- **RWKV V7a DE架构(RWKV V7 with Deep Eembedding)**
+- **RWKV V7b DEA架构(RWKV V7 with Deep Eembedding Attention)**
+
+只要在```demo-training-prepare.sh``` | ```demo-training-run.sh``` | ```demo-training-run-sft.sh```bash脚本里面的
+
+```MODEL_TYPE="x070"```中修改，可以调整模型架构
+```
+# Note: "x070" is Pure RWKV-V7
+#       "x070#DE" is RWKV-V7 with Deep Eembedding
+#       "x070#DE#DEA" is RWKV-V7 with Deep Eembedding Attention
+```
 ---
 
-## 📦 模型结构
+## 📦 模型结构 
+### Pure RWKV V7
 
 | 参数 | 数值 |
 |------|------|
 | 参数量 | 34.2M 🎯 |
+| 推理实际激活参数量 | ~34.2M 🚀 |
 | 层数 | 8 🧱 |
 | 隐藏维度 | 512 📐 |
 | 上下文长度 | 512->1024->2048 📏 |
 | 词表大小 | 6400 📚 |
 - Vocab 和MiniMind的保持一致
+```
+INFO:pytorch_lightning.callbacks.model_summary:
+  | Name   | Type       | Params | Mode  | FLOPs
+------------------------------------------------------
+0 | emb    | Embedding  | 3.3 M  | train | 0    
+1 | blocks | ModuleList | 27.6 M | train | 0    
+2 | ln_out | LayerNorm  | 1.0 K  | train | 0    
+3 | head   | Linear     | 3.3 M  | train | 0    
+------------------------------------------------------
+34.2 M    Trainable params
+0         Non-trainable params
+34.2 M    Total params
+```
+### RWKV V7 with Deep Eembedding
+
+| 参数 | 数值 |
+|------|------|
+| 参数量 | 34.2M + 57.3M(Free Params) 🎯 |
+| 推理实际激活参数量 | ~34.2M 🚀 |
+| 层数 | 8 🧱 |
+| 隐藏维度 | 512 📐 |
+| 上下文长度 | 512->1024->2048 📏 |
+| 词表大小 | 6400 📚 |
+- Vocab 和MiniMind的保持一致
+```
+INFO:pytorch_lightning.callbacks.model_summary:
+  | Name   | Type       | Params | Mode  | FLOPs
+------------------------------------------------------
+0 | emb    | Embedding  | 3.3 M  | train | 0    
+1 | blocks | ModuleList | 84.9 M | train | 0    
+2 | ln_out | LayerNorm  | 1.0 K  | train | 0    
+3 | head   | Linear     | 3.3 M  | train | 0    
+------------------------------------------------------
+91.5 M    Trainable params
+0         Non-trainable params
+91.5 M    Total params
+```
+### RWKV V7 with Deep Eembedding Attention
+
+| 参数 | 数值 |
+|------|------|
+| 参数量 | 34.2M + 57.3M(Free Params) + 43.5M(Self-Attention)🎯 |
+| 推理实际激活参数量 | ~34.2M + 43.5M(Self-Attention) 🚀 |
+| 层数 | 8 🧱 |
+| 隐藏维度 | 512 📐 |
+| 上下文长度 | 512->1024->2048 📏 |
+| 词表大小 | 6400 📚 |
+- Vocab 和MiniMind的保持一致
+```
+INFO:pytorch_lightning.callbacks.model_summary:
+  | Name   | Type       | Params | Mode  | FLOPs
+------------------------------------------------------
+0 | emb    | Embedding  | 3.3 M  | train | 0    
+1 | blocks | ModuleList | 128 M  | train | 0    
+2 | ln_out | LayerNorm  | 1.0 K  | train | 0    
+3 | head   | Linear     | 3.3 M  | train | 0    
+------------------------------------------------------
+135 M     Trainable params
+0         Non-trainable params
+135 M     Total params
+```
 ---
 
 ## 🧪 训练信息

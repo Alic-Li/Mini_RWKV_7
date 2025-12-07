@@ -4,7 +4,7 @@ import time
 
 import pytorch_lightning as pl
 import torch
-from pytorch_lightning.utilities import rank_zero_info, rank_zero_only
+from lightning_utilities.core.rank_zero import rank_zero_info, rank_zero_only
 
 
 def my_save(args, trainer, dd, ff):
@@ -112,8 +112,12 @@ class train_callback(pl.Callback):
             except BaseException:
                 pass
             trainer.my_time_ns = t_now
-            trainer.my_loss = trainer.my_loss_all.float().mean().item()
-            trainer.my_loss_sum += trainer.my_loss
+            if isinstance(outputs, dict):
+                current_loss = outputs['loss'].item()
+            else:
+                current_loss = outputs.item()
+            trainer.my_loss = current_loss
+            trainer.my_loss_sum += current_loss
             trainer.my_loss_count += 1
             trainer.my_epoch_loss = trainer.my_loss_sum / trainer.my_loss_count
             self.log("lr", trainer.my_lr, prog_bar=True, on_step=True)
@@ -149,7 +153,7 @@ class train_callback(pl.Callback):
 
     def on_train_epoch_start(self, trainer, pl_module):
         args = self.args
-        dataset = trainer.train_dataloader.dataset.datasets
+        dataset = trainer.train_dataloader.dataset
         # assert "MyDataset" in str(dataset)
         dataset.global_rank = trainer.global_rank
         dataset.real_epoch = int(args.epoch_begin + trainer.current_epoch)

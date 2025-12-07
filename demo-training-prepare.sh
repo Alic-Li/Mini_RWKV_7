@@ -12,6 +12,9 @@
 #
 ################################################################################
 #
+# Note: "x070" is Pure RWKV-V7
+#       "x070#DE" is RWKV-V7 with Deep Eembedding
+#       "x070#DE#DEA" is RWKV-V7 with Deep Eembedding Attention
 MODEL_TYPE="x070" # x060 => rwkv-6.0
 #
 N_LAYER="8"
@@ -61,3 +64,4 @@ python train.py \
  --vocab_size 6400 \
  --warmup_steps 10 \
  --weight_decay 0 \
+ --dropout 0 \

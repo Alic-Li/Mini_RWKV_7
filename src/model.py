@@ -58,8 +58,8 @@ if "x070" in os.environ["RWKV_MY_TESTING"]:
             "-munsafe-fp-atomics",
         ]
         load(
-            name="wind_backstepping_hip",
-            sources=["cuda/wkv7_hip.hip", "cuda/wkv7_op.hip"],
+            name="wind_backstepping",
+            sources=["hip/wkv7_hip.hip", "hip/wkv7_op.hip"],
             is_python_module=False,
             verbose=True,
             extra_cuda_cflags=flags,

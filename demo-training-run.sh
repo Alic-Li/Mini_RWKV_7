@@ -9,6 +9,9 @@
 #
 ################################################################################
 #
+# Note: "x070" is Pure RWKV-V7
+#       "x070#DE" is RWKV-V7 with Deep Eembedding
+#       "x070#DE#DEA" is RWKV-V7 with Deep Eembedding Attention
 MODEL_TYPE="x070" # x060 => rwkv-6.0
 #
 N_LAYER="8"
@@ -55,7 +58,6 @@ python train.py \
  --beta1 0.9 \
  --beta2 0.99 \
  --ctx_len $CTX_LEN \
- --tokenizer ./MiniMind2_tokenizer \
  --data_file $DATA_FILE \
  --data_type $DATA_TYPE \
  --devices $GPU_PER_NODE \
@@ -83,3 +85,4 @@ python train.py \
  --vocab_size 6400 \
  --warmup_steps 10 \
  --weight_decay 0.001 \
+ --dropout 0 \
