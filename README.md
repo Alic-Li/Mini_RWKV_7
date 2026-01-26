@@ -3,7 +3,7 @@
 
 🤗 [Pure RWKV V7 HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/Mini_RWKV_7_34.2M)
 
-🤗 [RWKV V7 with Deep Eembedding HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/MiniRWKV_7_DE_34.2M)
+🤗 [RWKV V7 with Deep Embedding HuggingFace Space~~~😜 Have a Try?](https://huggingface.co/spaces/Alic-Li/MiniRWKV_7_DE_34.2M)
 
 🤗 [我自己练的模型权重现已开源~](https://huggingface.co/Alic-Li/Mini_RWKV_7_34.2M)
 <div align="center">
@@ -15,16 +15,16 @@
 
 **💫 现已经支持训练**
 - **RWKV V7架构(Pure RWKV V7)**
-- **RWKV V7a DE架构(RWKV V7 with Deep Eembedding)**
-- **RWKV V7b DEA架构(RWKV V7 with Deep Eembedding Attention)**
+- **RWKV V7a DE架构(RWKV V7 with Deep Embedding)**
+- **RWKV V7b DEA架构(RWKV V7 with Deep Embedding Attention)**
 
 只要在```demo-training-prepare.sh``` | ```demo-training-run.sh``` | ```demo-training-run-sft.sh```bash脚本里面的
 
 ```MODEL_TYPE="x070"```中修改，可以调整模型架构
 ```
 # Note: "x070" is Pure RWKV-V7
-#       "x070#DE" is RWKV-V7 with Deep Eembedding
-#       "x070#DE#DEA" is RWKV-V7 with Deep Eembedding Attention
+#       "x070#DE" is RWKV-V7 with Deep Embedding
+#       "x070#DE#DEA" is RWKV-V7 with Deep Embedding Attention
 ```
 ---
 
@@ -53,7 +53,7 @@ INFO:pytorch_lightning.callbacks.model_summary:
 0         Non-trainable params
 34.2 M    Total params
 ```
-### RWKV V7 with Deep Eembedding
+### RWKV V7 with Deep Embedding
 
 | 参数 | 数值 |
 |------|------|
@@ -77,7 +77,7 @@ INFO:pytorch_lightning.callbacks.model_summary:
 0         Non-trainable params
 91.5 M    Total params
 ```
-### RWKV V7 with Deep Eembedding Attention
+### RWKV V7 with Deep Embedding Attention
 
 | 参数 | 数值 |
 |------|------|
