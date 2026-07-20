@@ -1,3 +1,7 @@
+<div align="right">
+  <a href="./README_EN.md">🇬🇧 English</a> | <b>🇨🇳 中文</b>
+</div>
+
 # 🪿 Mini-RWKV-V7-LM 
 🚀 让我们来从头训练一个属于自己的Mini-RWKV-7吧~ 小小的鹅也能飞得很高喔~
 
